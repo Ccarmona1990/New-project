@@ -1,0 +1,45 @@
+
+import java.util.Scanner;
+
+public class Factorial {
+
+    public static void main(String[] args) {
+
+       Scanner input = new Scanner(System.in); 
+
+          while (true) { 
+        
+            System.out.println("Introduzca un numero"); 
+            String number = input.nextLine().toLowerCase(); 
+            final int MINIMUM_VALUE = 0; 
+            long factorial = 1; 
+            long i = 1; 
+            
+            if (number.equals("quit")) 
+                break; 
+            
+            if (!isStringOnlyDigit(number)){ 
+                System.out.println("Please enter a valid value or type QUIT to terminate the program"); 
+            
+            } else if (isStringOnlyDigit(number)) { 
+               
+                 if (Integer.parseInt(number) > MINIMUM_VALUE) { 
+               
+                     while (Integer.parseInt(number) >= i) { 
+                        factorial = factorial * i; i++; 
+                
+                     } System.out.println("The factorial number of " + number + " is " + factorial); 
+                
+                } else if (Integer.parseInt(number) <= MINIMUM_VALUE) { 
+                     
+                     System.out.println("This number cannot be calculted"); 
+                } 
+            } 
+        } 
+    } 
+    public static boolean isStringOnlyDigit(String str) { 
+        return ((str != null) 
+                && (!str.equals("")) 
+                && (str.chars().allMatch(Character::isDigit))); 
+    } 
+}
