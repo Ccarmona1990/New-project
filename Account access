@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please create you account");
+
+            int acctAccess;
+            String newUsername;
+            String newPassword;
+            String eMailAddress;
+
+            while (true) {
+                //New account (Signing up)
+
+                System.out.print("New Username: ");
+                newUsername = input.nextLine();
+
+                if (newUsername.length() <= 0) {
+                    System.out.println("Please try again");
+                } else if (newUsername.length() > 0) {
+                    break;
+                }
+            } acctAccess = 1;
+
+            while (true) {
+                System.out.print("New Password: ");
+                newPassword = input.nextLine();
+
+                if (newPassword.length() >= 8 && newPassword.chars().anyMatch(Character::isDigit)) {
+                    break;
+                } else
+                    System.out.println("Your password must have 8 characters including numbers");
+            } acctAccess = acctAccess + 1;
+
+            while (true) {
+                System.out.print("Email address: ");
+                eMailAddress = input.nextLine();
+
+                if (eMailAddress.contains("@gmail") || eMailAddress.contains("@hotmail")) {
+                    break;
+                } else
+                    System.out.println("Please enter a valid email account");
+            } acctAccess = acctAccess + 1;
+
+            if (acctAccess == 3) {
+            
+                System.out.println();
+                System.out.println("Thank you for choosing our platform");
+                System.out.println("Let's Access your account");
+                System.out.println();
+
+                while (true) {
+
+                    //Accessing the account (logging in)
+                    System.out.print("Username: ");
+                    String username = input.nextLine();
+                    System.out.print("Password: ");
+                    String password = input.nextLine();
+
+                    if (username.equals(newUsername) || username.equals(eMailAddress) && password.equals(newPassword)) {
+                        System.out.println("Thank you for choosing us and Welcome to the platform!!");
+                        break;
+                    } else {
+                        System.out.println("Your username or password is incorrect, please try again");
+                        
+                }
+            } 
+        }
