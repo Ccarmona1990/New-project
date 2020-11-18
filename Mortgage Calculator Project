@@ -1,0 +1,54 @@
+import java.text.NumberFormat; 
+import java.util.Scanner; 
+public class MorgageCalculator2 { 
+    public static void main(String[] args) { 
+          Scanner input = new Scanner(System.in);
+                final int PERCENT = 100;
+                final int MONTHS_IN_A_YEAR = 12;
+                int principal;
+                int years;
+                int min;
+                int max;
+                double morgage;
+                double interestRate;
+
+                while (true) {
+                    System.out.print("Principal ($1K - $1M): ");
+                    principal = input.nextInt(); min = 1000; max = 1000000;
+
+                    if (principal < min && principal <= max) {
+                        System.out.println("Enter a value greater than 0 and less then 1000");}
+
+                    if (principal >= min)
+                        break;
+                }
+                while (true) {
+                    System.out.print("Annual Interest Rate: ");
+                    interestRate = input.nextDouble(); min = 0; max = 30;
+
+                    if (interestRate <= min && interestRate <= max){
+                        System.out.println("Enter a value greater than 0 and less than o equal to 30");
+
+                    } else if (interestRate > min)
+                        break;
+                }
+                while (true){
+                    System.out.print("Period of time in (Years): ");
+                    years = input.nextInt(); min = 0; max = 30;
+
+                    if (years <= 0 && years >= max){
+                        System.out.println("Enter a value between 1 and 30");
+
+                    } else if (years > min)
+                        break;
+                }
+                double monthlyInterestRates = (interestRate / PERCENT) / MONTHS_IN_A_YEAR;
+                int monthlyPayment = years * MONTHS_IN_A_YEAR;
+
+                morgage = principal
+                        * (monthlyInterestRates * Math.pow(1 + monthlyInterestRates,monthlyPayment))
+                        / (Math.pow(1 + monthlyInterestRates,monthlyPayment) - 1);
+
+                System.out.println("Morgage: " + NumberFormat.getCurrencyInstance().format(morgage));
+            }
+        }
