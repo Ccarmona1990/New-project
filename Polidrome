@@ -1,0 +1,18 @@
+// It checks if a string is a palindrome
+   public static boolean isPalindrome (String a){
+
+        String b = "";
+        int len = a.length() - 1; int zero = 0;
+
+        for (int i = len; i >= zero; i--) {
+
+            b = b + a.charAt(i);
+        }
+        if (a.equalsIgnoreCase(b)) {
+            System.out.println("This string is a palindrome");
+            return true;
+        } else
+            System.out.println("This string is not a palindrome");
+        return false;
+    }
+    
